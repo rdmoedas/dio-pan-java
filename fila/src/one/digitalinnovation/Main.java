@@ -4,13 +4,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Fila minhaFila = new Fila();
+        Fila<String> minhaFila = new Fila<>();
 
         minhaFila.enqueue("primeiro");
         minhaFila.enqueue("segundo");
         minhaFila.enqueue("terceiro");
-        minhaFila.enqueue("quarto");
-        minhaFila.enqueue("quinto");
+        minhaFila.enqueue("quarto"); 
+        // minhaFila.enqueue(5); ERRO, já que a fila foi definida como STRING
         System.out.println(minhaFila);
 
         System.out.println(minhaFila.dequeue());

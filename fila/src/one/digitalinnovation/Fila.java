@@ -1,29 +1,29 @@
 package one.digitalinnovation;
 
-public class Fila {
+public class Fila<T> {
 
-    private No refNoEntradaFila;
+    private No<T> refNoEntradaFila;
 
     Fila() {
         this.refNoEntradaFila = null;
     }
 
-    public void enqueue(Object obj) {
-        No novoNo = new No(obj);
+    public void enqueue(T object) {
+        No<T> novoNo = new No<T>(object);
         novoNo.setRefNo(refNoEntradaFila);
         refNoEntradaFila = novoNo;
     }
 
-    public Object last() {
+    public T last() {
         if(!this.isEmpty()) {
-            return refNoEntradaFila.getObject();
+            return (T) refNoEntradaFila.getObject();
         }
         return null;
     }
 
-    public Object first() {
+    public T first() {
         if(!this.isEmpty()) {
-            No primeiroNo = refNoEntradaFila;
+            No<T> primeiroNo = refNoEntradaFila;
             while (true) {
                 if(primeiroNo.getRefNo() != null) {
                     primeiroNo = primeiroNo.getRefNo();
@@ -31,15 +31,15 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo.getObject();
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
 
-    public Object dequeue() {
+    public T dequeue() {
         if(!this.isEmpty()) {
-            No primeiroNo = refNoEntradaFila;
-            No noAuxiliar = refNoEntradaFila;
+            No<T> primeiroNo = refNoEntradaFila;
+            No<T> noAuxiliar = refNoEntradaFila;
             while (true) {
                 if(primeiroNo.getRefNo() != null) {
                     noAuxiliar = primeiroNo;
@@ -49,7 +49,7 @@ public class Fila {
                     break;
                 }
             }
-            return primeiroNo.getObject();
+            return (T) primeiroNo.getObject();
         }
         return null;
     }
@@ -62,7 +62,7 @@ public class Fila {
     @Override
     public String toString() {
         String stringRetorno = "";
-        No noAuxiliar = refNoEntradaFila;
+        No<T> noAuxiliar = refNoEntradaFila;
 
         if(refNoEntradaFila != null) {
             while (true) {
